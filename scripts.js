@@ -526,3 +526,54 @@ window.addEventListener('beforeunload', () => {
         clearInterval(state.autoRefreshTimer);
     }
 });
+
+//dark mode
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+const icon = darkModeToggle.querySelector('i');
+
+// 1. Verificar se o usuário já tem uma preferência salva
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme === 'dark') {
+    applyDarkMode();
+}
+
+// 2. Evento de clique
+darkModeToggle.addEventListener('click', () => {
+    if (body.classList.contains('dark-mode')) {
+        applyLightMode();
+    } else {
+        applyDarkMode();
+    }
+});
+
+function applyDarkMode() {
+    body.classList.add('dark-mode');
+    icon.classList.replace('fa-moon', 'fa-sun'); // Troca o ícone
+    localStorage.setItem('theme', 'dark');
+    
+    // Opcional: Mostrar um aviso (Toast)
+    showToast("Modo escuro ativado", "success");
+}
+
+function applyLightMode() {
+    body.classList.remove('dark-mode');
+    icon.classList.replace('fa-sun', 'fa-moon');
+    localStorage.setItem('theme', 'light');
+    
+    showToast("Modo claro ativado", "success");
+}
+
+// Função auxiliar para Toasts (caso você já tenha a lógica)
+function showToast(message, type) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<span class="toast-message">${message}</span>`;
+    
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}

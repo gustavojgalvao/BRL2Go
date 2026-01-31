@@ -3,10 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Conversor de moedas profissional com taxas de câmbio em tempo real. Converta BRL, USD, EUR e mais de 150 moedas instantaneamente." />
-    <meta name="keywords" content="conversor de moedas, taxa de câmbio, BRL, USD, EUR, cotação" />
+    <meta
+      name="description"
+      content="Conversor de moedas profissional com taxas de câmbio em tempo real. Converta BRL, USD, EUR e mais de 150 moedas instantaneamente."
+    />
+    <meta
+      name="keywords"
+      content="conversor de moedas, taxa de câmbio, BRL, USD, EUR, cotação"
+    />
     <meta name="theme-color" content="#064531" />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,9 +20,11 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css" />
-    <title>BRL2Go - Conversor de Moedas Profissional | Cotação em Tempo Real</title>
+    <title>
+      BRL2Go - Conversor de Moedas Profissional | Cotação em Tempo Real
+    </title>
   </head>
   <body>
     <!-- Loading Overlay -->
@@ -28,6 +36,9 @@
       <div class="header-content">
         <h1 class="logo">BRL<span class="logo-accent">2</span>GO</h1>
         <p class="tagline">Conversão de moedas em tempo real</p>
+        <button id="dark-mode-toggle" class="theme-btn">
+        <i class="ri-moon-clear-line"></i>
+      </button>
       </div>
     </header>
 
@@ -45,16 +56,20 @@
           <label for="amount">Você envia</label>
           <div class="input-group">
             <div class="currency-symbol" id="fromSymbol">R$</div>
-            <input 
-              id="amount" 
-              type="text" 
+            <input
+              id="amount"
+              type="text"
               inputmode="decimal"
-              value="1.00" 
+              value="1.00"
               placeholder="0.00"
               aria-label="Valor a converter"
               autocomplete="off"
             />
-            <select id="fromCurrency" class="flag-select" aria-label="Moeda de origem">
+            <select
+              id="fromCurrency"
+              class="flag-select"
+              aria-label="Moeda de origem"
+            >
               <option value="BRL" selected>BRL</option>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
@@ -71,14 +86,23 @@
 
         <!-- Swap Button -->
         <div class="swap-container">
-          <button 
-            id="swapCurrencies" 
-            class="swap-button" 
+          <button
+            id="swapCurrencies"
+            class="swap-button"
             aria-label="Inverter moedas"
             title="Trocar moedas"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path
+                d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"
+              />
             </svg>
           </button>
         </div>
@@ -88,15 +112,19 @@
           <label for="convert">Você recebe</label>
           <div class="input-group">
             <div class="currency-symbol" id="toSymbol">$</div>
-            <input 
-              id="convert" 
-              type="text" 
+            <input
+              id="convert"
+              type="text"
               inputmode="decimal"
-              readonly 
+              readonly
               placeholder="0.00"
               aria-label="Valor convertido"
             />
-            <select id="toCurrency" class="flag-select" aria-label="Moeda de destino">
+            <select
+              id="toCurrency"
+              class="flag-select"
+              aria-label="Moeda de destino"
+            >
               <option value="USD" selected>USD</option>
               <option value="EUR">EUR</option>
               <option value="BRL">BRL</option>
@@ -115,9 +143,23 @@
         <div class="info-taxa">
           <div class="rate-header">
             <p class="rate-label">Taxa de Câmbio</p>
-            <button id="refreshRate" class="refresh-btn" aria-label="Atualizar cotação" title="Atualizar">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+            <button
+              id="refreshRate"
+              class="refresh-btn"
+              aria-label="Atualizar cotação"
+              title="Atualizar"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"
+                />
               </svg>
             </button>
           </div>
@@ -132,7 +174,7 @@
         </div>
 
         <!-- Histórico Rápido -->
-        <div class="quick-history" id="quickHistory" style="display: none;">
+        <div class="quick-history" id="quickHistory" style="display: none">
           <p class="history-title">Conversões recentes</p>
           <div class="history-items" id="historyItems"></div>
         </div>
@@ -140,8 +182,15 @@
         <!-- Action Button -->
         <button id="btn-converter" class="main-button">
           <span>Converter Agora</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
 

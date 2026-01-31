@@ -20,6 +20,55 @@
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+body.dark-mode {
+    --primary-green: #00a16c; 
+    --primary-green-dark: #000a07;
+    --white: #111827;        
+    --text-main: #f9fafb;    
+    --text-muted: #9CA3AF;
+    --input-bg: #1f2937;
+    --border-color: #374151;
+    --card-bg: #111827;
+}
+
+body.dark-mode .input-group {
+    background: var(--input-bg);
+}
+
+body.dark-mode .input-group input {
+    color: var(--text-main);
+}
+
+body.dark-mode .flag-select {
+    background-color: #1f2937;
+    color: var(--text-main);
+    box-shadow: none;
+}
+
+/* Estilo do botão de tema no Header */
+.theme-btn {
+    background: rgba(145, 199, 89, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    width: 20%;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-btn:hover {
+    background: rgba(145, 199, 89, .25);
+} 
+
+.theme-btn i {
+    color: white;
+    font-size: 1.2rem;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -115,6 +164,10 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.header-content button {
+    margin-left: 60vw;
 }
 
 .logo {
