@@ -49,7 +49,7 @@ body.dark-mode .flag-select {
 .theme-btn {
     background: rgba(145, 199, 89, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.15);
-    width: 20%;
+    width: 42px;
     height: 40px;
     border-radius: 50px;
     cursor: pointer;
@@ -163,11 +163,16 @@ header {
 .header-content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
-.header-content button {
-    margin-left: 60vw;
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
 }
 
 .logo {
@@ -739,16 +744,34 @@ footer {
     }
     
     .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .logo-section {
         flex-direction: column;
+        align-items: flex-start;
         gap: 4px;
     }
     
     .logo {
-        font-size: 28px;
+        font-size: 24px;
     }
     
     .tagline {
-        font-size: 11px;
+        font-size: 10px;
+    }
+    
+    .theme-btn {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+    
+    .theme-btn i {
+        font-size: 1rem;
     }
     
     .container {

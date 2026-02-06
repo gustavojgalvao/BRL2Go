@@ -1,220 +1,163 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Conversor de moedas profissional com taxas de câmbio em tempo real. Converta BRL, USD, EUR e mais de 150 moedas instantaneamente."
-    />
-    <meta
-      name="keywords"
-      content="conversor de moedas, taxa de câmbio, BRL, USD, EUR, cotação"
-    />
-    <meta name="theme-color" content="#064531" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css" />
-    <title>
-      BRL2Go - Conversor de Moedas Profissional | Cotação em Tempo Real
-    </title>
-  </head>
-  <body>
-    <!-- Loading Overlay -->
-    <div id="loading-overlay" class="loading-overlay">
-      <div class="spinner"></div>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Conversor de moedas profissional com taxas de câmbio em tempo real. Converta BRL, USD, EUR e mais de 150 moedas instantaneamente." />
+  <meta name="keywords" content="conversor de moedas, taxa de câmbio, BRL, USD, EUR, cotação" />
+  <meta name="theme-color" content="#064531" />
 
-    <header>
-      <div class="header-content">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>
+    BRL2Go - Conversor de Moedas Profissional | Cotação em Tempo Real
+  </title>
+</head>
+
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <div class="logo-section">
         <h1 class="logo">BRL<span class="logo-accent">2</span>GO</h1>
         <p class="tagline">Conversão de moedas em tempo real</p>
-        <button id="dark-mode-toggle" class="theme-btn">
+      </div>
+      <button id="dark-mode-toggle" class="theme-btn">
         <i class="ri-moon-clear-line"></i>
       </button>
+    </div>
+  </header>
+
+  <div class="line"></div>
+
+  <main>
+    <div class="container">
+      <div class="text">
+        <h2>Conversor de Moedas</h2>
+        <p class="subtitle">Taxas atualizadas instantaneamente</p>
       </div>
-    </header>
 
-    <div class="line"></div>
-
-    <main>
-      <div class="container">
-        <div class="text">
-          <h2>Conversor de Moedas</h2>
-          <p class="subtitle">Taxas atualizadas instantaneamente</p>
+      <!-- Input From -->
+      <div class="input-box">
+        <label for="amount">Você envia</label>
+        <div class="input-group">
+          <div class="currency-symbol" id="fromSymbol">R$</div>
+          <input id="amount" type="text" inputmode="decimal" value="1.00" placeholder="0.00"
+            aria-label="Valor a converter" autocomplete="off" />
+          <select id="fromCurrency" class="flag-select" aria-label="Moeda de origem">
+            <option value="BRL" selected>BRL</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="CAD">CAD</option>
+            <option value="AUD">AUD</option>
+            <option value="CHF">CHF</option>
+            <option value="CNY">CNY</option>
+            <option value="ARS">ARS</option>
+          </select>
         </div>
+      </div>
 
-        <!-- Input From -->
-        <div class="input-box">
-          <label for="amount">Você envia</label>
-          <div class="input-group">
-            <div class="currency-symbol" id="fromSymbol">R$</div>
-            <input
-              id="amount"
-              type="text"
-              inputmode="decimal"
-              value="1.00"
-              placeholder="0.00"
-              aria-label="Valor a converter"
-              autocomplete="off"
-            />
-            <select
-              id="fromCurrency"
-              class="flag-select"
-              aria-label="Moeda de origem"
-            >
-              <option value="BRL" selected>BRL</option>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
-              <option value="JPY">JPY</option>
-              <option value="CAD">CAD</option>
-              <option value="AUD">AUD</option>
-              <option value="CHF">CHF</option>
-              <option value="CNY">CNY</option>
-              <option value="ARS">ARS</option>
-            </select>
-          </div>
+      <!-- Swap Button -->
+      <div class="swap-container">
+        <button id="swapCurrencies" class="swap-button" aria-label="Inverter moedas" title="Trocar moedas">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Input To -->
+      <div class="input-box">
+        <label for="convert">Você recebe</label>
+        <div class="input-group">
+          <div class="currency-symbol" id="toSymbol">$</div>
+          <input id="convert" type="text" inputmode="decimal" readonly placeholder="0.00"
+            aria-label="Valor convertido" />
+          <select id="toCurrency" class="flag-select" aria-label="Moeda de destino">
+            <option value="USD" selected>USD</option>
+            <option value="EUR">EUR</option>
+            <option value="BRL">BRL</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="CAD">CAD</option>
+            <option value="AUD">AUD</option>
+            <option value="CHF">CHF</option>
+            <option value="CNY">CNY</option>
+            <option value="ARS">ARS</option>
+          </select>
         </div>
+      </div>
 
-        <!-- Swap Button -->
-        <div class="swap-container">
-          <button
-            id="swapCurrencies"
-            class="swap-button"
-            aria-label="Inverter moedas"
-            title="Trocar moedas"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <path
-                d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"
-              />
+      <!-- Exchange Rate Info -->
+      <div class="info-taxa">
+        <div class="rate-header">
+          <p class="rate-label">Taxa de Câmbio</p>
+          <button id="refreshRate" class="refresh-btn" aria-label="Atualizar cotação" title="Atualizar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
             </svg>
           </button>
         </div>
-
-        <!-- Input To -->
-        <div class="input-box">
-          <label for="convert">Você recebe</label>
-          <div class="input-group">
-            <div class="currency-symbol" id="toSymbol">$</div>
-            <input
-              id="convert"
-              type="text"
-              inputmode="decimal"
-              readonly
-              placeholder="0.00"
-              aria-label="Valor convertido"
-            />
-            <select
-              id="toCurrency"
-              class="flag-select"
-              aria-label="Moeda de destino"
-            >
-              <option value="USD" selected>USD</option>
-              <option value="EUR">EUR</option>
-              <option value="BRL">BRL</option>
-              <option value="GBP">GBP</option>
-              <option value="JPY">JPY</option>
-              <option value="CAD">CAD</option>
-              <option value="AUD">AUD</option>
-              <option value="CHF">CHF</option>
-              <option value="CNY">CNY</option>
-              <option value="ARS">ARS</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Exchange Rate Info -->
-        <div class="info-taxa">
-          <div class="rate-header">
-            <p class="rate-label">Taxa de Câmbio</p>
-            <button
-              id="refreshRate"
-              class="refresh-btn"
-              aria-label="Atualizar cotação"
-              title="Atualizar"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"
-                />
-              </svg>
-            </button>
-          </div>
-          <h3 id="result-text" class="rate-value">---</h3>
-          <div class="rate-footer">
-            <small id="update-time" class="update-time">
-              <span class="pulse-dot"></span>
-              Carregando cotação...
-            </small>
-            <small id="rate-trend" class="rate-trend"></small>
-          </div>
-        </div>
-
-        <!-- Histórico Rápido -->
-        <div class="quick-history" id="quickHistory" style="display: none">
-          <p class="history-title">Conversões recentes</p>
-          <div class="history-items" id="historyItems"></div>
-        </div>
-
-        <!-- Action Button -->
-        <button id="btn-converter" class="main-button">
-          <span>Converter Agora</span>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        <!-- Quick Actions -->
-        <div class="quick-amounts">
-          <p class="quick-label">Valores rápidos:</p>
-          <div class="quick-buttons">
-            <button class="quick-btn" data-amount="100">100</button>
-            <button class="quick-btn" data-amount="500">500</button>
-            <button class="quick-btn" data-amount="1000">1k</button>
-            <button class="quick-btn" data-amount="5000">5k</button>
-          </div>
+        <h3 id="result-text" class="rate-value">---</h3>
+        <div class="rate-footer">
+          <small id="update-time" class="update-time">
+            <span class="pulse-dot"></span>
+            Carregando cotação...
+          </small>
+          <small id="rate-trend" class="rate-trend"></small>
         </div>
       </div>
-    </main>
 
-    <!-- Footer -->
-    <footer>
-      <p>Dados fornecidos por AwesomeAPI • Taxas atualizadas a cada minuto</p>
-    </footer>
+      <!-- Histórico Rápido -->
+      <div class="quick-history" id="quickHistory" style="display: none">
+        <p class="history-title">Conversões recentes</p>
+        <div class="history-items" id="historyItems"></div>
+      </div>
 
-    <!-- Toast Notifications -->
-    <div id="toast-container" class="toast-container"></div>
+      <!-- Action Button -->
+      <button id="btn-converter" class="main-button">
+        <span>Converter Agora</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
 
-    <script src="scripts.js"></script>
-  </body>
+      <!-- Quick Actions -->
+      <div class="quick-amounts">
+        <p class="quick-label">Valores rápidos:</p>
+        <div class="quick-buttons">
+          <button class="quick-btn" data-amount="100">100</button>
+          <button class="quick-btn" data-amount="500">500</button>
+          <button class="quick-btn" data-amount="1000">1k</button>
+          <button class="quick-btn" data-amount="5000">5k</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Dados fornecidos por AwesomeAPI • Taxas atualizadas a cada minuto</p>
+  </footer>
+
+  <!-- Toast Notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="scripts.js"></script>
+</body>
+
 </html>
